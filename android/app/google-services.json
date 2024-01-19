@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "803486096145",
+    "project_id": "test-task-upwork",
+    "storage_bucket": "test-task-upwork.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803486096145:android:76d6c17ca0088184be8ab0",
+        "android_client_info": {
+          "package_name": "com.example.test_task_upwork"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvIj7mZwMUEVXLfJQMdpJA_qZiaOfZ-3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
