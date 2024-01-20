@@ -6,7 +6,7 @@ class Car {
   final String model;
   final String price;
   final String location;
-  final String availabilityStatus;
+  final String status;
   final String image;
 
   Car({
@@ -15,7 +15,7 @@ class Car {
     required this.model,
     required this.price,
     required this.location,
-    required this.availabilityStatus,
+    required this.status,
     required this.image,
   });
 
@@ -31,7 +31,7 @@ class Car {
       model: data['model'],
       price: data['price'],
       location: data['location'],
-      availabilityStatus: data['availabilityStatus'],
+      status: data['status'],
       image: data['image'],
     );
   }
@@ -41,7 +41,7 @@ class Car {
     String model,
     String price,
     String location,
-    String availabilityStatus,
+    String status,
     String image,
   ) {
     return {
@@ -49,7 +49,7 @@ class Car {
       'model': model,
       'price': price,
       'location': location,
-      'availabilityStatus': availabilityStatus,
+      'status': status,
       'image': image,
     };
   }

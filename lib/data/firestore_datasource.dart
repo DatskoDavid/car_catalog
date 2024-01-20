@@ -24,7 +24,7 @@ class FirestoreDatasource {
       car.model,
       car.price,
       car.location,
-      car.availabilityStatus,
+      car.status,
       car.image,
     );
 
@@ -42,7 +42,7 @@ class FirestoreDatasource {
       car.model,
       car.price,
       car.location,
-      car.availabilityStatus,
+      car.status,
       car.image,
     );
 

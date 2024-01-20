@@ -17,8 +17,7 @@ class EditCarScreen extends StatelessWidget {
     final modelController = TextEditingController(text: car.model);
     final priceController = TextEditingController(text: car.price);
     final locationController = TextEditingController(text: car.location);
-    final statusController =
-        TextEditingController(text: car.availabilityStatus);
+    final statusController = TextEditingController(text: car.status);
     final imageController = TextEditingController(text: car.image);
     return SafeArea(
       child: Scaffold(
@@ -71,7 +70,7 @@ class EditCarScreen extends StatelessWidget {
                           model: modelController.text,
                           price: priceController.text,
                           location: locationController.text,
-                          availabilityStatus: statusController.text,
+                          status: statusController.text,
                           image: imageController.text,
                         );
                         FirestoreDatasource().updateCar(car);

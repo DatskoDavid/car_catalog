@@ -59,7 +59,7 @@ class CarDetailsScreen extends StatelessWidget {
             _getPadding(15),
             _productProperties(context, 'Location', car.location),
             _getPadding(15),
-            _productProperties(context, 'Status', car.availabilityStatus),
+            _productProperties(context, 'Status', car.status),
             _getPadding(20),
           ],
         ),

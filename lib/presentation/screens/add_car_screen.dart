@@ -69,7 +69,7 @@ class AddCarScreen extends StatelessWidget {
                           model: modelController.text,
                           price: priceController.text,
                           location: locationController.text,
-                          availabilityStatus: statusController.text,
+                          status: statusController.text,
                           image: imageController.text,
                         );
                         FirestoreDatasource().addData(car);
