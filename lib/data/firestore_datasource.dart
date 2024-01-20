@@ -35,7 +35,7 @@ class FirestoreDatasource {
 
   //if edit word in Firestore need to get this word from WordsApi
   Future<void> updateCar(Car car) async {
-    final word = _collectionRef.doc(car.id);
+    final carCollection = _collectionRef.doc(car.id);
 
     final editedData = car.toFirestore(
       car.company,
@@ -46,7 +46,7 @@ class FirestoreDatasource {
       car.image,
     );
 
-    word.update(editedData).then(
+    carCollection.update(editedData).then(
           (value) => debugPrint("DocumentSnapshot successfully updated!"),
           onError: (e) => debugPrint("Error updating document $e"),
         );

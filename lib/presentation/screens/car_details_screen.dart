@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/car.dart';
 import '../widgets/delete_car_dialog.dart';
-import 'edit_car_screem.dart';
+import 'edit_car_screen.dart';
 
 class CarDetailsScreen extends StatelessWidget {
   final Car car;

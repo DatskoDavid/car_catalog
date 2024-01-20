@@ -24,6 +24,7 @@ class Car {
     // SnapshotOptions? options,
   ) {
     final data = snapshot.data() as Map<String, dynamic>;
+    print('snapshot.id: ${snapshot.id}');
 
     return Car(
       id: snapshot.id,
@@ -36,7 +37,7 @@ class Car {
     );
   }
 
-  Map<String, dynamic> toFirestore(
+  Map<String, String> toFirestore(
     String company,
     String model,
     String price,

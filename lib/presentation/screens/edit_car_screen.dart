@@ -65,7 +65,8 @@ class EditCarScreen extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                        final car = Car(
+                        final newCar = Car(
+                          id: car.id,
                           company: companyController.text,
                           model: modelController.text,
                           price: priceController.text,
@@ -73,7 +74,8 @@ class EditCarScreen extends StatelessWidget {
                           status: statusController.text,
                           image: imageController.text,
                         );
-                        FirestoreDatasource().updateCar(car);
+                        FirestoreDatasource().updateCar(newCar);
+                        Navigator.pop(context);
                         Navigator.pop(context);
                       }
                     },

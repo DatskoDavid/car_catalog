@@ -36,14 +36,6 @@ class HomeScreen extends StatelessWidget {
                   final car = Car.fromFirestore(snapshot.data!.docs[index]);
                   return CarCard(
                     car: car,
-                    /* updateData: () => _showUpdateWordDialog(
-                      context,
-                      data.id!,
-                      data.company,
-                      FirestoreDatasource().updateCar,
-                    ),
-                    deleteData: () =>
-                        FirestoreDatasource().deleteData(data.id!), */
                   );
                 },
                 separatorBuilder: (context, index) =>
@@ -66,34 +58,6 @@ class HomeScreen extends StatelessWidget {
         ),
         child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  Future _showAddDataDialog(
-    BuildContext context,
-    Function(String) fun,
-  ) async {
-    return showDialog(
-      context: context,
-      // barrierDismissible: false,
-      builder: (context) {
-        return AddDataDialog(addData: fun);
-      },
-    );
-  }
-
-  Future _showUpdateWordDialog(
-    BuildContext context,
-    String id,
-    String data,
-    Function(String, String) fun,
-  ) async {
-    return showDialog(
-      context: context,
-      // barrierDismissible: false,
-      builder: (context) {
-        return UpdateDataDialog(elementId: id, data: data, updateData: fun);
-      },
     );
   }
 }

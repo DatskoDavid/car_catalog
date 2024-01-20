@@ -17,6 +17,7 @@ class CarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Car Id /CarCard/: ${car.id}');
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
