@@ -19,10 +19,7 @@ class Car {
     required this.image,
   });
 
-  factory Car.fromFirestore(
-    DocumentSnapshot<Object?> snapshot,
-    // SnapshotOptions? options,
-  ) {
+  factory Car.fromFirestore(DocumentSnapshot<Object?> snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
 
     return Car(

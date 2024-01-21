@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:test_task_upwork/domain/di/injector.dart';
 
 import 'firebase_options.dart';
 import 'presentation/screens/auth_screen.dart';
@@ -12,6 +13,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  initInjector();
 
   runApp(const MyApp());
 }

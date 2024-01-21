@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/car.dart';
+import '../../domain/models/car.dart';
 import '../screens/car_details_screen.dart';
 
 class CarCard extends StatelessWidget {
@@ -17,7 +17,6 @@ class CarCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('Car Id /CarCard/: ${car.id}');
     return GestureDetector(
       onTap: () => Navigator.push(
         context,

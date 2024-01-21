@@ -1,8 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:test_task_upwork/domain/di/injector.dart';
 
-import '../../domain/car.dart';
+import '../../data/datasources/firestore_datasource.dart';
+import '../../data/repositories/car_repository_impl.dart';
+import '../../domain/models/car.dart';
+import '../bloc/car_bloc/car_bloc.dart';
+import '../bloc/car_bloc/car_event.dart';
+import '../bloc/car_bloc/car_state.dart';
 import '../widgets/car_card.dart';
 import 'add_car_screen.dart';
 
@@ -23,26 +30,16 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('cars').snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.separated(
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  final car = Car.fromFirestore(snapshot.data!.docs[index]);
-                  return CarCard(
-                    car: car,
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-              );
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            }
-
-            return const Center(child: CircularProgressIndicator());
+        child: BlocBuilder<CarBloc, DataState>(
+          bloc: injector.get<CarBloc>()..add(InitData()),
+          builder: (context, state) {
+            return ListView.separated(
+              itemCount: state.data.length,
+              itemBuilder: (context, index) {
+                return CarCard(car: state.data[index]);
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+            );
           },
         ),
       ),

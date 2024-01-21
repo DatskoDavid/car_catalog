@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
-import '../domain/car.dart';
+import '../../domain/models/car.dart';
 
 class FirestoreDatasource {
   final CollectionReference _collectionRef =
@@ -16,7 +16,7 @@ class FirestoreDatasource {
     return allCars;
   }
 
-  Future<void> addData(Car car) async {
+  Future<void> addCar(Car car) async {
     final docRef = _collectionRef.doc();
 
     final mappedData = car.toFirestore(

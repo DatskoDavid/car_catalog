@@ -102,7 +102,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               if (value == null ||
                                   value.isEmpty ||
                                   value.trim().length < 4) {
-                                return 'Please enter at lest 4 characters.';
+                                return 'Please enter at least 4 characters.';
                               }
                               return null;
                             },

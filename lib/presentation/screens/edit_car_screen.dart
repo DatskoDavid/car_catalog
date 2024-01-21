@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:test_task_upwork/data/firestore_datasource.dart';
+import 'package:test_task_upwork/data/datasources/firestore_datasource.dart';
 import 'package:test_task_upwork/presentation/widgets/add_car_text_field.dart';
 
-import '../../domain/car.dart';
+import '../../domain/di/injector.dart';
+import '../../domain/models/car.dart';
+import '../bloc/car_bloc/car_bloc.dart';
+import '../bloc/car_bloc/car_event.dart';
 
 class EditCarScreen extends StatelessWidget {
   EditCarScreen({super.key, required this.car});
@@ -74,7 +77,7 @@ class EditCarScreen extends StatelessWidget {
                           status: statusController.text,
                           image: imageController.text,
                         );
-                        FirestoreDatasource().updateCar(newCar);
+                        injector.get<CarBloc>().add(EditCar(car: newCar));
                         Navigator.pop(context);
                         Navigator.pop(context);
                       }

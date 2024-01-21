@@ -19,8 +19,8 @@ class CarRepositoryImpl implements CarRepository {
   }
 
   @override
-  Future<void> updateData(String id, String editedData) async {
-    return await firestoreDatasource.updateData(id, editedData);
+  Future<void> updateData(Car editedCar) async {
+    return await firestoreDatasource.updateCar(editedCar);
   }
 
   @override

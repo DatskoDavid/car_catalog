@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:test_task_upwork/data/firestore_datasource.dart';
+import 'package:test_task_upwork/data/datasources/firestore_datasource.dart';
+
+import '../../domain/di/injector.dart';
+import '../bloc/car_bloc/car_bloc.dart';
+import '../bloc/car_bloc/car_event.dart';
 
 class DeleteCarDialog extends StatelessWidget {
   final String carId;
@@ -57,7 +61,7 @@ class DeleteCarDialog extends StatelessWidget {
                   ),
                 ),
                 onPressed: () async {
-                  FirestoreDatasource().deleteCar(carId);
+                  injector.get<CarBloc>().add(DeleteCar(id: carId));
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },
