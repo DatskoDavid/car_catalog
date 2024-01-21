@@ -7,13 +7,9 @@ class CarCard extends StatelessWidget {
   const CarCard({
     super.key,
     required this.car,
-    // required this.updateData,
-    // required this.deleteData,
   });
 
   final Car car;
-  // final Function() updateData;
-  // final Function() deleteData;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +43,7 @@ class CarCard extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                car.price,
+                '\$${car.price}',
                 style:
                     const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),

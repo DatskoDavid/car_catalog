@@ -101,7 +101,7 @@ class CarDetailsScreen extends StatelessWidget {
           ),
           const SizedBox(width: 20),
           Text(
-            value,
+            title == 'Price' ? '\$$value' : value,
             overflow: TextOverflow.clip,
             style: TextStyle(
               fontSize: 18,

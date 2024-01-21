@@ -25,3 +25,11 @@ class DeleteCar extends CarEvent {
   final String id;
   DeleteCar({required this.id});
 }
+
+class SortCarsByAlphabet extends CarEvent {
+  SortCarsByAlphabet();
+}
+
+class SortCarsByPrice extends CarEvent {
+  SortCarsByPrice();
+}

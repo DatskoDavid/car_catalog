@@ -2,13 +2,10 @@ import 'package:equatable/equatable.dart';
 
 import '../../../domain/models/car.dart';
 
-class DataState extends Equatable {
+class CarState {
   final List<Car> data;
 
-  const DataState({required this.data});
+  const CarState({required this.data});
 
-  DataState copyWith({List<Car>? data}) => DataState(data: data ?? this.data);
-
-  @override
-  List<Object?> get props => [data];
+  CarState copyWith({List<Car>? data}) => CarState(data: data ?? this.data);
 }
