@@ -24,7 +24,6 @@ class Car {
     // SnapshotOptions? options,
   ) {
     final data = snapshot.data() as Map<String, dynamic>;
-    print('snapshot.id: ${snapshot.id}');
 
     return Car(
       id: snapshot.id,

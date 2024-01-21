@@ -12,9 +12,9 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final usernameController = TextEditingController(text: 'test');
-  final emailController = TextEditingController(text: 'test@gmail.com');
-  final passwordController = TextEditingController(text: '123456');
+  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   final firebase = FirebaseAuth.instance;
 
@@ -134,8 +134,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           validator: (value) {
                             if (value == null ||
                                 value.isEmpty ||
-                                value.trim().length < 6) {
-                              return 'Password must be at least 6 characters long';
+                                value.trim().length < 8) {
+                              return 'Password must be at least 8 characters long';
                             }
                             return null;
                           },

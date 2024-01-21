@@ -2,11 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../data/firestore_datasource.dart';
 import '../../domain/car.dart';
-import '../widgets/add_data_dialog.dart';
 import '../widgets/car_card.dart';
-import '../widgets/update_data_dialog.dart';
 import 'add_car_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home'),
         actions: [
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app),
             onPressed: () => FirebaseAuth.instance.signOut(),
           )
         ],
