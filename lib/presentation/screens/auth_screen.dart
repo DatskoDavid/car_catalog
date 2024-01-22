@@ -165,7 +165,23 @@ class _AuthScreenState extends State<AuthScreen> {
                                   ? 'Create an account'
                                   : 'I already have an account',
                             ),
-                          )
+                          ),
+                        GestureDetector(
+                          onTap: () async {
+                            await firebase.signInWithEmailAndPassword(
+                              email: 'test@gmail.com',
+                              password: '12345678',
+                            );
+                          },
+                          child: const Text(
+                            'Skip authentication',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 122, 122, 122),
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

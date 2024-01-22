@@ -144,7 +144,6 @@ class _SortCarsDialogState extends State<FilterCarsDialog> {
                   } else if (filterVW) {
                     filterData = 'Volkswagen';
                   }
-
                   injector
                       .get<CarBloc>()
                       .add(FilterCarsByCompany(filterData: filterData));
