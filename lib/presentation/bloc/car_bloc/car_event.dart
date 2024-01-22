@@ -33,3 +33,9 @@ class SortCarsByAlphabet extends CarEvent {
 class SortCarsByPrice extends CarEvent {
   SortCarsByPrice();
 }
+
+class FilterCarsByCompany extends CarEvent {
+  final String filterData;
+  // final List<String> filterData;
+  FilterCarsByCompany({required this.filterData});
+}

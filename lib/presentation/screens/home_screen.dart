@@ -7,7 +7,8 @@ import '../bloc/car_bloc/car_bloc.dart';
 import '../bloc/car_bloc/car_event.dart';
 import '../bloc/car_bloc/car_state.dart';
 import '../widgets/car_card.dart';
-import '../widgets/sort_dialog.dart';
+import '../widgets/filter_cars_dialog.dart';
+import '../widgets/sort_cars_dialog.dart';
 import 'add_car_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_alt),
-            onPressed: () {},
+            onPressed: () => _showFilterCarsDialog(context),
           ),
           IconButton(
             icon: const Icon(Icons.sort),
@@ -67,6 +68,17 @@ class HomeScreen extends StatelessWidget {
       context: context,
       builder: (context) {
         return SortCarsDialog();
+      },
+    );
+  }
+
+  Future _showFilterCarsDialog(
+    BuildContext context,
+  ) async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return const FilterCarsDialog();
       },
     );
   }

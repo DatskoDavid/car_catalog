@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../domain/models/car.dart';
 import '../../../domain/repositories/car_repository.dart';
 import 'car_event.dart';
 import 'car_state.dart';
@@ -20,6 +19,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
     on<DeleteCar>(_delete);
     on<SortCarsByPrice>(_sortCarsByPrice);
     on<SortCarsByAlphabet>(_sortCarsByAlphabet);
+    on<FilterCarsByCompany>(_filterCarsByCompany);
   }
 
   void _init(InitData event, Emitter<CarState> emit) async {
@@ -54,6 +54,13 @@ class CarBloc extends Bloc<CarEvent, CarState> {
   void _sortCarsByPrice(SortCarsByPrice event, Emitter<CarState> emit) {
     final data = state.data;
     data.sort((a, b) => int.parse(a.price).compareTo(int.parse(b.price)));
+    emit(state.copyWith(data: data));
+  }
+
+  void _filterCarsByCompany(
+      FilterCarsByCompany event, Emitter<CarState> emit) async {
+    final data = await carRepository.getData();
+    data.removeWhere((element) => element.company != event.filterData);
     emit(state.copyWith(data: data));
   }
 }

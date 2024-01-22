@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-
 import '../../../domain/models/car.dart';
 
 class CarState {

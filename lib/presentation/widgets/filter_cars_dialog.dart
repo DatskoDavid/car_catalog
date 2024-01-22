@@ -1,72 +1,97 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/di/injector.dart';
 import '../bloc/car_bloc/car_bloc.dart';
 import '../bloc/car_bloc/car_event.dart';
 
-class SortCarsDialog extends StatefulWidget {
-  SortCarsDialog({super.key});
+class FilterCarsDialog extends StatefulWidget {
+  const FilterCarsDialog({super.key});
 
   @override
-  State<SortCarsDialog> createState() => _SortCarsDialogState();
+  State<FilterCarsDialog> createState() => _SortCarsDialogState();
 }
 
-class _SortCarsDialogState extends State<SortCarsDialog> {
-  bool sortAlphabetically = false;
-  bool sortByPrice = false;
+class _SortCarsDialogState extends State<FilterCarsDialog> {
+  bool filterAudi = false;
+  bool filterBMW = false;
+  bool filterVW = false;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text(
-        'Sort cars',
+        'Filter cars',
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
       content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
+          Text(
+            'By company:',
+            style: TextStyle(fontSize: 16),
+          ),
           Row(
             children: [
               Checkbox(
-                value: sortAlphabetically,
+                value: filterAudi,
                 onChanged: (value) {
                   setState(() {
-                    sortAlphabetically = !sortAlphabetically;
-                    if (sortAlphabetically) {
-                      sortByPrice = false;
+                    filterAudi = !filterAudi;
+                    if (filterAudi) {
+                      filterBMW = false;
+                      filterVW = false;
                     }
                   });
                 },
               ),
               Text(
-                'Alphabetically',
+                'Audi',
                 style: TextStyle(fontSize: 16),
               ),
             ],
           ),
-          SizedBox(height: 10),
           Row(
             children: [
               Checkbox(
-                value: sortByPrice,
+                value: filterBMW,
                 onChanged: (value) {
                   setState(() {
-                    sortByPrice = !sortByPrice;
-                    if (sortByPrice) {
-                      sortAlphabetically = false;
+                    filterBMW = !filterBMW;
+                    if (filterBMW) {
+                      filterAudi = false;
+                      filterVW = false;
                     }
                   });
                 },
               ),
               Text(
-                'By price',
+                'BMW',
                 style: TextStyle(fontSize: 16),
               ),
             ],
-          )
+          ),
+          Row(
+            children: [
+              Checkbox(
+                value: filterVW,
+                onChanged: (value) {
+                  setState(() {
+                    filterVW = !filterVW;
+                    if (filterVW) {
+                      filterAudi = false;
+                      filterBMW = false;
+                    }
+                  });
+                },
+              ),
+              Text(
+                'VW',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
         ],
       ),
       actions: [
@@ -111,12 +136,18 @@ class _SortCarsDialogState extends State<SortCarsDialog> {
                   ),
                 ),
                 onPressed: () async {
-                  if (sortAlphabetically) {
-                    injector.get<CarBloc>().add(SortCarsByAlphabet());
+                  String filterData = '';
+                  if (filterAudi) {
+                    filterData = 'Audi';
+                  } else if (filterBMW) {
+                    filterData = 'BMW';
+                  } else if (filterVW) {
+                    filterData = 'Volkswagen';
                   }
-                  if (sortByPrice) {
-                    injector.get<CarBloc>().add(SortCarsByPrice());
-                  }
+
+                  injector
+                      .get<CarBloc>()
+                      .add(FilterCarsByCompany(filterData: filterData));
                   Navigator.pop(context);
                 },
                 child: const Padding(
