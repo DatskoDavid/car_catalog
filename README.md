@@ -1,4 +1,4 @@
 # Car catalog
 
-https://github.com/DatskoDavid/test_task_upwork/assets/70882919/920c1720-0ec6-4947-a9cd-635d8b39a7fd
+https://github.com/DatskoDavid/car_catalog/assets/70882919/d445e537-5db6-42a4-b298-0e0a0eb19437
 
